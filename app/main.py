@@ -3,14 +3,14 @@ import hmac
 import os
 import sqlite3
 import uuid
-from contextlib import contextmanager
+from contextlib import contextmanager, asynccontextmanager
 from datetime import datetime, timezone
 from typing import Literal
 
 from fastapi import Depends, FastAPI, Header, HTTPException, status
 from pydantic import BaseModel, Field
 
-app = FastAPI(title="LSK Enterprise AI Resolution - deterministic reference POC", version="0.1.0")
+
 
 
 def now():
@@ -26,7 +26,6 @@ def config():
     return key
 
 
-@app.on_event("startup")
 def initialize():
     config()
     with db() as conn:
@@ -48,6 +47,15 @@ def initialize():
             event TEXT NOT NULL, resource TEXT NOT NULL, at TEXT NOT NULL
         );
         """)
+
+
+@asynccontextmanager
+async def lifespan(_app):
+    initialize()
+    yield
+
+
+app = FastAPI(title="LSK Enterprise AI Resolution - deterministic reference POC", version="0.1.0", lifespan=lifespan)
 
 
 @contextmanager
