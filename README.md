@@ -58,6 +58,10 @@ Note: on Windows PowerShell, set environment variables with `$env:DEMO_MODE='tru
 
 For local testing only, send `X-API-Key`, `X-Tenant`, `X-Actor`, and `X-Role` (`analyst`, `manager`, `approver`, `admin`). These headers are user-controlled and therefore **cannot be trusted** in any deployed product. In production, replace them with validated OIDC access tokens and server-side tenant/role bindings. The app **refuses startup** unless `DEMO_MODE=true`; this is an intentional fail-closed control.
 
+## Sequential FDE engagement — start here
+
+**[Canonical six-step FDE playbook](docs/FDE_SEQUENTIAL_PLAYBOOK.md):** Discover → Define → Design → Build & Integrate → Prove → Hand Over & Expand. Complete [CP1 engagement charter](docs/templates/CP1_ENGAGEMENT_CHARTER_TEMPLATE.md), [discovery evidence](docs/templates/DISCOVERY_INTERVIEW_TEMPLATE.md), [CP2 client problem brief](docs/templates/CP2_PROBLEM_BRIEF_TEMPLATE.md) and [CP3 design/SOW](docs/templates/CP3_DESIGN_AND_SOW_TEMPLATE.md) in sequence. The local app is an engineering spike, not customer acceptance. Existing engineering work-package phases follow the accepted FDE stage, and pilot/production require separate evidence and approvals.
+
 ## Architecture and project lifecycle
 
 - **[Execution roadmap and G0–G8 gate evidence](docs/EXECUTION_ROADMAP.md)**
