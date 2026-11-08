@@ -19,13 +19,13 @@ git clone https://github.com/nolet7/lsk-enterprise-ai-fde-platform.git
 cd lsk-enterprise-ai-fde-platform
 cp .env.example .env
 docker compose up --build -d
-python scripts/smoke.py
+API_URL=http://127.0.0.1:18000 python scripts/smoke.py
 docker compose down
 ```
 
-For PowerShell replace `cp` with `Copy-Item`. The URL works only **after** the repository is created and pushed.
+For PowerShell replace `cp` with `Copy-Item`. The repository is hosted at the clone URL above.
 
-**Safety:** The API binds only to `127.0.0.1:8000`. The `.env` demo key is intentionally public and is NOT a credential for any real environment. NEVER expose the service to the internet or use actual customer data. Compose stores the SQLite DB under disposable `/tmp`; restarting the container can reset demo state. End-to-end persistence is deliberately out of scope for this stage.
+**Safety:** Docker publishes the API only on `127.0.0.1:18000` (container port `8000`). The `.env` demo key is intentionally public and is NOT a credential for any real environment. NEVER expose the service to the internet or use actual customer data. Compose stores the SQLite DB under disposable `/tmp`; restarting the container can reset demo state. End-to-end persistence is deliberately out of scope for this stage.
 
 ## Reproduce locally — Python
 
@@ -60,6 +60,9 @@ For local testing only, send `X-API-Key`, `X-Tenant`, `X-Actor`, and `X-Role` (`
 
 ## Architecture and project lifecycle
 
+- **[Execution roadmap and G0–G8 gate evidence](docs/EXECUTION_ROADMAP.md)**
+- **[29-task actionable delivery backlog](docs/TASK_BACKLOG.md)**
+- **[POC → pilot → production → handover verification runbook](docs/PHASE_VERIFY_RUNBOOK.md)**
 - [Mandate and phased delivery plan](docs/DELIVERY_PLAN.md)
 - [Architecture decisions and security review](docs/ARCHITECTURE_SECURITY.md)
 - [Reproducibility manifest and verification](docs/REPRODUCIBILITY.md)
