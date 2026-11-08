@@ -1,0 +1,22 @@
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      DEMO_MODE: "true"
+      DEMO_API_KEY: "${DEMO_API_KEY:-local-demo-only-change-me}"
+      DATABASE_PATH: "/tmp/demo.db"
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,uid=10001,gid=10001
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 128
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/live', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
