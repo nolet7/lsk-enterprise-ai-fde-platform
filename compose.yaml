@@ -2,7 +2,7 @@ services:
   api:
     build: .
     ports:
-      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:18000:8000"
     environment:
       DEMO_MODE: "true"
       DEMO_API_KEY: "${DEMO_API_KEY:-local-demo-only-change-me}"
