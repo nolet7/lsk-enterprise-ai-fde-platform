@@ -1,3 +1,5 @@
+> **Execution precedence (2026-11-08):** Follow [FDE_SEQUENTIAL_PLAYBOOK.md](FDE_SEQUENTIAL_PLAYBOOK.md) first: Discover → Define → Design → Build & Integrate → Prove → Hand Over & Expand. CP1, CP2, and CP3 gates precede a customer POC. This document is a technical workstream/backlog reference, NOT permission to implement later phases out of order. The existing local POC is a pre-engagement engineering spike, not a customer-approved POC.
+
 # CTO mandate through customer handover
 
 ## Fictional CTO mandate
